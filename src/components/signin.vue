@@ -3,7 +3,7 @@
     <v-col cols="12" sm="10" md="8" lg="6">
       <v-card ref="form">
     <v-card-text>
-        <p class="justify-content-center">Create an account</p>
+        <p class="title text-center bold amber--text darken-3">Create an account</p>
             <v-text-field
                 ref="name"
                 v-model="name"
@@ -23,7 +23,7 @@
                 addressCheck
                 ]"
                 label="Address Line"
-                placeholder="Snowy Rock Pl"
+                placeholder="Address"
                 counter="25"
                 required
                 solo
@@ -33,17 +33,8 @@
                 v-model="city"
                 :rules="[() => !!city || 'This field is required', addressCheck]"
                 label="City"
-                placeholder="El Paso"
+                placeholder="City"
                 required
-                solo
-            ></v-text-field>
-            <v-text-field
-                ref="state"
-                v-model="state"
-                :rules="[() => !!state || 'This field is required']"
-                label="State/Province/Region"
-                required
-                placeholder="TX"
                 solo
             ></v-text-field>
             <v-text-field
@@ -52,7 +43,7 @@
                 :rules="[() => !!zip || 'This field is required']"
                 label="ZIP / Postal Code"
                 required
-                placeholder="79938"
+                placeholder="Zip code"
                 solo
             ></v-text-field>
             <v-autocomplete
@@ -86,7 +77,7 @@
                 <span>Refresh form</span>
                 </v-tooltip>
             </v-slide-x-reverse-transition>
-            <v-btn color="success" text @click="submit">Submit</v-btn>
+            <v-btn color="amber darken-3" text @click="submit">Submit</v-btn>
             </v-card-actions>
       </v-card>
         </v-col>
