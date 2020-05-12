@@ -1,20 +1,19 @@
 <template>
 <v-app>
       <navbar></navbar>
-      <signin></signin>
+      <answersheet></answersheet>
   </v-app>
 </template>
 
 <script>
 import navbar from './components/navbar';
-import signin from './components/signin'
+import answersheet from './components/answersheet'
 
 export default {
   name: 'App',
-
   components: {
     navbar,
-    signin
+    answersheet
   },
 
   data: () => ({

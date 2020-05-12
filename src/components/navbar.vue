@@ -4,7 +4,7 @@
     <v-toolbar dense >
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-toolbar-title class="font-weight-thin">words Of world</v-toolbar-title>
+      <v-toolbar-title class="amber--text darken-3font-weight-thin">words Of world</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
