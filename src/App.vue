@@ -1,9 +1,10 @@
 <template>
-<v-app>
-      <navbar></navbar>
-      <answersheet></answersheet>
-  </v-app>
+    <v-app>
+        <navbar></navbar>
+        <answersheet></answersheet>
+    </v-app>
 </template>
+
 
 <script>
 import navbar from './components/navbar';
