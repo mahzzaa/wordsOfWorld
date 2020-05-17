@@ -11,19 +11,19 @@
 
                     
                     <p></p>
-                    <div class="text--primary"  v-for="question in questions" :key="question.title">
-                       <ul class="list">
-                           <li>{{question.id}} .</li>
-                           <li>  {{question.title}}</li>
-                       </ul>
+                    <div class="text--primary" v-for="answershet in answersheet" :key="answershet.id">
+                      
+                           <div>{{answershet.number}}.</div>
+                           <div>{{answershet.question}}</div>
+                      <div class="checkbox">
+                        <v-checkbox :label="answershet.answer1" color="orange" value="answer1" hide-details></v-checkbox>
+                        <v-checkbox :label="answershet.answer2" color="orange" value="answer2" hide-details></v-checkbox>
+                        <v-checkbox :label="answershet.answer3" color="orange" value="answer3" hide-details></v-checkbox>
+                        <v-checkbox :label="answershet.answer4" color="orange" value="answer4" hide-details></v-checkbox>
+                    </div>
                     </div>
     
-                    <div class="checkbox">
-                        <v-checkbox label="orange" color="orange" value="orange" hide-details></v-checkbox>
-                    <v-checkbox label="orange" color="orange" value="orange" hide-details></v-checkbox>
-                    <v-checkbox label="orange" color="orange" value="orange" hide-details></v-checkbox>
-                    <v-checkbox label="orange" color="orange" value="orange" hide-details></v-checkbox>
-                    </div>
+                    
 
                 </v-card-text>
                 <v-card-actions class="action">
@@ -39,19 +39,40 @@
 </template>
 
 <script>
+import db from '@/fb'
+
 export default {
  data () {
       return {
            skill: 20,
-           questions:[
-               {title: "what's the meaning od book?" , id: '1'}
-           ],
-           id: '',
-           answers:[]
+           answersheet: [ ]
          }
     },
     created(){
-    }
+        db.collection('answersheet').onSnapshot(res => {
+      const changes = res.docChanges();
+      changes.forEach(change =>{
+        if (change.type === 'added'){
+          this.answersheet.push({
+            ...change.doc.data(),
+            id: change.doc.id
+          })
+        }
+      });
+    })
+    // db.collection('answersheet').onSnapshot(res => {
+    //   const changes = res.docChanges();
+    //   console.log(changes[0].doc.data());
+    //   changes.forEach(change =>{
+    //     if (change.type === 'added'){
+    //       this.projects.push({
+    //         ...change.doc.data(),
+    //         id: change.doc.id
+    //       })
+    //     }
+    //   });
+    // })
+  }
 }
 </script>
 
