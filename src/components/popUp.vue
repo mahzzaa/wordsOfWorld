@@ -1,11 +1,11 @@
 <template>
   <v-dialog v-model="dialog" width="600px">
       <template v-slot:activator="{ on }">
-        <v-btn text slot="activator" class="green accent-2"  v-on="on">Add New question</v-btn>
+        <v-btn text slot="activator" class="green accent-2"  v-on="on">یه سوال اضافه کن</v-btn>
       </template>
        <v-card>
             <v-card-title primary-title>
-                <h5 >Add a new question</h5>
+                <h5 >یه سوال جدید اضافه کن</h5>
             </v-card-title>
             <v-card-text>
                 <v-form class="px-3" ref="form">
