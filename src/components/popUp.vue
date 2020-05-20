@@ -1,43 +1,49 @@
 <template>
-    <v-dialog v-model="dialog" width="600px">
-        <template v-slot:activator="{ on }">
-            <v-btn text slot="activator" class="green accent-2" v-on="on">Add New Project</v-btn>
-        </template>
-
-        <v-card>
+  <v-dialog v-model="dialog" width="600px">
+      <template v-slot:activator="{ on }">
+        <v-btn text slot="activator" class="green accent-2"  v-on="on">Add New question</v-btn>
+      </template>
+       <v-card>
             <v-card-title primary-title>
-                <h2>Add a new project</h2>
+                <h5 >Add a new question</h5>
             </v-card-title>
             <v-card-text>
                 <v-form class="px-3" ref="form">
-                    <v-text-field label="title" v-model="title" prepend-icon="folder" :rules="inputRules"></v-text-field>
-                    <v-textarea label="Information" v-model="content" prepend-icon="edit" :rules="inputRules"></v-textarea>
-                    <v-menu v-model="menu2" :close-on-content-click="false" :nudge-right="40" transition="scale-transition" offset-y min-width="290px">
-                        <template v-slot:activator="{ on }">
-                            <v-text-field v-model="date" :rules="inputRules" :value="formattedDate" label="Due date" prepend-icon="date_range" readonly v-on="on"></v-text-field>
-                        </template>
-                        <v-date-picker v-model="date" @input="menu2 = false"></v-date-picker>
-                    </v-menu>
-                    <v-btn text class="success mx-0 mt-3" @click="submit" :loading="loading">Add project</v-btn>
+                    <v-text-field label="number" v-model="number" prepend-icon="format_list_numbered" ></v-text-field>
+                    <v-text-field label="question" v-model="question" prepend-icon="help" :rules="inputRules"></v-text-field>
+                    <v-text-field label="answer1" v-model="answer1" prepend-icon="chat_bubble_outline" ></v-text-field>
+                    <v-text-field label="answer2" v-model="answer2" prepend-icon="chat_bubble_outline" ></v-text-field>
+                    <v-text-field label="answer3" v-model="answer3" prepend-icon="chat_bubble_outline" ></v-text-field>
+                    <v-text-field label="answer4" v-model="answer4" prepend-icon="chat_bubble_outline" ></v-text-field>
+                    <v-text-field label="currect answer" v-model="correct_answer" prepend-icon="check" ></v-text-field>
+
+
+                    <v-btn text class="success mx-0 mt-3" @click="submit" :loading="loading">Add question</v-btn>
+
+                    
                 </v-form>
             </v-card-text>
         </v-card>
-    </v-dialog>
+        
+  </v-dialog>
+ 
 </template>
-
 
 <script>
 import db from '@/fb'
+
 export default {
     data(){
         return{
-            title: '',
-            content:'',
-            due:'',
-            date: new Date().toISOString().substr(0, 10),
-            menu: false,
+            question:'',
+            answer1:'',
+            answer2:'',
+            answer3:'',
+            answer4:'',
+            correct_answer:'',
+            number:'',
+             menu: false,
             modal: false,
-            menu2: false,
             inputRules: [
                 v => v.length >= 3 || 'Minimum lenght is 3 characters'
             ],
@@ -50,18 +56,20 @@ export default {
             if (this.$refs.form.validate()){
                 this.loading = true;
 
-                const project = {
-                    title: this.title,
-                    content: this.content,
-                    due: this.date,
-                    person:'The Net Ninja',
-                    status: 'ongoing'
+                const answershet = {
+                    question: this.question,
+                    answer1: this.answer1,
+                    answer2: this.answer2,
+                    answer3: this.answer3,
+                    answer4: this.answer4,
+                    number:this.number,
+                    correct_answer: this.correct_answer
                 }
 
-                db.collection('projects').add(project).then(()=>{
+                db.collection('answersheet').add(answershet).then(()=>{
                     this.loading = false;
                     this.dialog = false;
-                    this.$emit('projectAdded')
+                    this.$emit('questionAdded')
                 })
             }
         }
