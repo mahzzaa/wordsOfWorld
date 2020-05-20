@@ -2,7 +2,7 @@
     <nav elevate-on-scroll scroll-target="#scrolling-techniques-7">
         <v-toolbar  flat dense>
             <v-app-bar-nav-icon app class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>
-            <v-toolbar-title class="light-green--text lighten-1 darken-3font-weight-thin">words Of world</v-toolbar-title>
+            <v-toolbar-title class="light-green--text lighten-1 darken-3font-weight-thin">کلمه های جهان</v-toolbar-title>
 
             <v-spacer></v-spacer>
 
@@ -22,7 +22,7 @@
                    <img src="/female.svg">
                  </v-avatar>
                  <p class="white--text subheading mt-1">
-                     The Net Ninja
+                     پروفایل
                  </p>
                 </v-flex>
                 <v-flex class="mt-4 mb-3">
